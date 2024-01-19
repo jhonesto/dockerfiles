@@ -1,10 +1,17 @@
 FROM fedora:39
 
+ENV \
+	SHELL=/bin/bash \
+	LC_COLLATE=C \
+	LANG=C.UTF-8 \
+	CHARSET=UTF-8
+	
 RUN	dnf update -y && \
 	dnf upgrade --refresh && \
 	dnf install -y java-21-openjdk \
 	java-21-openjdk-devel \
-	curl micro git
+	curl micro git \
+	rxvt-unicode neofetch xclip
 
 RUN groupadd -g 1000 myuser
 RUN adduser -u 1000 -g myuser myuser
